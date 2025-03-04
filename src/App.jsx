@@ -9,10 +9,13 @@ import AboutUs from "./pages/AboutUs";
 import Posts from "./pages/Posts";
 import SinglePost from "./pages/SinglePost"
 
+//task importo context
+import { ApiProvider } from "./context/ApiContext";
+
 function App() {
 
   return (
-    <>
+    <ApiProvider>
       <BrowserRouter>
         <Routes >
           <Route Component={DefaultLayout}>
@@ -27,7 +30,7 @@ function App() {
 
         </Routes>
       </BrowserRouter>
-    </>
+    </ApiProvider>
   )
 }
 

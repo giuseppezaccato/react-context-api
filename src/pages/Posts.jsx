@@ -1,27 +1,34 @@
 //task import axios/ NavLink/ useState&useEffect
-import axios from "axios"
+// import axios from "axios" //* to => ApiContext
 //todo "npm i axios" da terminale
 
 import { NavLink } from "react-router-dom"
 //todo "npm i react-router-dom" da terminale
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
+
+//task import customHook
+import { useApiContext } from "../context/ApiContext"
 
 //task import url dotEnv
-// const apiUrl = import.meta.env.VITE_ENDPOINT_URL; //* to => ApiProvider
+// const url = import.meta.env.VITE_ENDPOINT_URL; //* to => ApiContext
 
 
 export default function Posts() {
+    //task destructuring da customHook useApiContext
+    const { posts, getAxiosData } = useApiContext()
 
 
     //task imposto array vuoto reattivo
-    // const [posts, setPosts] = useState([]); //* to => ApiProvider
+    // const [posts, setPosts] = useState([]); //* to => ApiContext
 
     //task axios apiCall con useEffect
     useEffect(() => {
-        // axios.get(apiUrl)
+        // axios.get(url)
         //     .then(res => setPosts(res.data))
-        //     .catch(err => console.error(err)) //* to => ApiProvider
+        //     .catch(err => console.error(err)) //* to => ApiContext
+        getAxiosData()
+
 
         //? fetch method
         // fetch(`${url}`, { method: 'GET' })

@@ -1,6 +1,5 @@
 import { useContext, useState, createContext } from "react";
 import axios from "axios";
-import { Children } from "react";
 
 const ApiContext = createContext();
 
@@ -25,7 +24,7 @@ const ApiProvider = ({ children }) => {
     //* chiamte API
     //todo funzione custom call in Posts da aggiungere come callBackFunction
     const getAxiosData = () => {
-        axios.get(apiUrl)
+        axios.get(url)
             .then(res => setPosts(res.data))
             .catch(err => console.error(err))
     }
@@ -37,9 +36,12 @@ const ApiProvider = ({ children }) => {
             .catch(err => console.error(err))
     }
 
+    const attributes = { posts, getAxiosData, singlePost, showAxiosData }
+
     //task ritorno il come viene ereditato il value destrutturato
     return (
-        <ApiContext.Provider value={posts, getAxiosData, singlePost, showAxiosData}>
+
+        <ApiContext.Provider value={attributes}>
             {children}
         </ApiContext.Provider>
 
@@ -47,6 +49,7 @@ const ApiProvider = ({ children }) => {
 
 };
 
+//task custom hook 
 const useApiContext = () => useContext(ApiContext);
 
 export { ApiProvider, useApiContext }
